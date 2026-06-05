@@ -1,0 +1,83 @@
+FOLDER STRUCTURE REPORT
+Root: D:\TUSHARJHA\WEBDevlpment\WeatherApp
+================================================================================
+
+📁 WeatherApp/
+├── 📁 node_modules/  [IGNORED]
+├── 📁 public/
+│   └── 🖼️ icon.svg  [SVG]  (306 B)
+├── 📁 src/
+│   ├── 📁 app/
+│   │   ├── 📁 providers/
+│   │   │   └── 📜 AppLayout.jsx  [JSX]  (1.7 KB)
+│   │   └── 📁 routes/
+│   │       └── 📜 index.jsx  [JSX]  (1.5 KB)
+│   ├── 📁 engines/
+│   │   ├── 📜 airQualityEngine.js  [JS]  (2.3 KB)
+│   │   ├── 📜 alertEngine.js  [JS]  (3.9 KB)
+│   │   ├── 📜 insightEngine.js  [JS]  (4.4 KB)
+│   │   ├── 📜 severityEngine.js  [JS]  (2.5 KB)
+│   │   └── 📜 weatherScoreEngine.js  [JS]  (3.0 KB)
+│   ├── 📁 pages/
+│   │   ├── 📁 Analytics/
+│   │   │   └── 📜 index.jsx  [JSX]  (14.1 KB)
+│   │   ├── 📁 Compare/
+│   │   │   └── 📜 index.jsx  [JSX]  (12.2 KB)
+│   │   ├── 📁 Dashboard/
+│   │   │   └── 📜 index.jsx  [JSX]  (4.0 KB)
+│   │   └── 📁 SavedLocations/
+│   │       └── 📜 index.jsx  [JSX]  (7.0 KB)
+│   ├── 📁 shaders/
+│   │   ├── 📜 ShaderContainer.jsx  [JSX]  (484 B)
+│   │   ├── 📜 shaderPresets.js  [JS]  (1.0 KB)
+│   │   ├── 📜 ShaderThemeEngine.js  [JS]  (511 B)
+│   │   └── 📜 WeatherShader.jsx  [JSX]  (4.3 KB)
+│   ├── 📁 shared/
+│   │   ├── 📁 components/
+│   │   │   ├── 📜 Badge.jsx  [JSX]  (503 B)
+│   │   │   ├── 📜 Card.jsx  [JSX]  (835 B)
+│   │   │   ├── 📜 EmptyState.jsx  [JSX]  (674 B)
+│   │   │   ├── 📜 ErrorState.jsx  [JSX]  (1.2 KB)
+│   │   │   ├── 📜 Navigation.jsx  [JSX]  (3.4 KB)
+│   │   │   ├── 📜 SearchBar.jsx  [JSX]  (5.0 KB)
+│   │   │   └── 📜 Skeleton.jsx  [JSX]  (491 B)
+│   │   ├── 📁 constants/
+│   │   │   └── 📜 index.js  [JS]  (2.6 KB)
+│   │   ├── 📁 services/
+│   │   │   ├── 📁 api/
+│   │   │   │   ├── 📜 airQualityApi.js  [JS]  (1.6 KB)
+│   │   │   │   ├── 📜 forecastApi.js  [JS]  (2.9 KB)
+│   │   │   │   ├── 📜 locationApi.js  [JS]  (1.4 KB)
+│   │   │   │   └── 📜 weatherApi.js  [JS]  (2.2 KB)
+│   │   │   └── 📜 cache.js  [JS]  (1.5 KB)
+│   │   ├── 📁 styles/
+│   │   │   └── 🎨 globals.css  [CSS]  (5.2 KB)
+│   │   └── 📁 utils/
+│   │       └── 📜 index.js  [JS]  (2.4 KB)
+│   ├── 📁 store/
+│   │   ├── 📜 environmentStore.js  [JS]  (770 B)
+│   │   ├── 📜 savedLocationsStore.js  [JS]  (2.0 KB)
+│   │   ├── 📜 settingsStore.js  [JS]  (680 B)
+│   │   └── 📜 weatherStore.js  [JS]  (3.7 KB)
+│   ├── 📁 widgets/
+│   │   └── 📁 dashboard/
+│   │       ├── 📜 AlertCenter.jsx  [JSX]  (3.1 KB)
+│   │       ├── 📜 AQIWidget.jsx  [JSX]  (2.9 KB)
+│   │       ├── 📜 ForecastWidget.jsx  [JSX]  (2.5 KB)
+│   │       ├── 📜 HeroWeather.jsx  [JSX]  (4.7 KB)
+│   │       ├── 📜 HourlyForecast.jsx  [JSX]  (1.8 KB)
+│   │       ├── 📜 InsightsWidget.jsx  [JSX]  (2.0 KB)
+│   │       ├── 📜 MetricsGrid.jsx  [JSX]  (3.2 KB)
+│   │       ├── 📜 SeverityWidget.jsx  [JSX]  (2.0 KB)
+│   │       └── 📜 WeatherScoreWidget.jsx  [JSX]  (3.7 KB)
+│   └── 📜 main.jsx  [JSX]  (275 B)
+├── 🌐 index.html  [HTML]  (874 B)
+├── 🔒 package-lock.json  [JSON]  (264.5 KB)
+├── 📦 package.json  [JSON]  (828 B)
+├── 📜 postcss.config.js  [JS]  (68 B)
+├── 📖 README.md  [MD]  (2.4 KB)
+├── 📜 tailwind.config.js  [JS]  (1.8 KB)
+└── 📜 vite.config.js  [JS]  (1.1 KB)
+
+────────────────────────────────────────────────────────────────────────────────
+Summary: 22 dirs, 52 files, 399.5 KB total
