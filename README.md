@@ -34,7 +34,7 @@ Edit `.env`:
 VITE_OPENWEATHER_API_KEY=your_key_here
 ```
 
-> **Note:** The project ships with a demo key (`0a9c043d5f1b56f2e377adbc998bbec3`) that may be rate-limited. For production use, replace it with your own key.
+> **Note:** The project ships with a demo key that may be rate-limited. For production use, replace it with your own key.
 
 ### 3. Install & Run
 
