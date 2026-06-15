@@ -1,9 +1,9 @@
-import axios from 'axios';
-import { cacheGet, cacheSet } from '../cache.js';
-import { CACHE_KEYS } from '../../constants/index.js';
+import axios from "axios";
+import { cacheGet, cacheSet } from "../cache.js";
+import { CACHE_KEYS } from "../../constants/index.js";
 
-const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY || '0a9c043d5f1b56f2e377adbc998bbec3';
-const BASE = 'https://api.openweathermap.org/data/2.5';
+const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
+const BASE = "https://api.openweathermap.org/data/2.5";
 
 const client = axios.create({ baseURL: BASE, timeout: 10000 });
 
@@ -12,8 +12,8 @@ export async function fetchForecastByCity(city) {
   const cached = await cacheGet(key);
   if (cached) return cached;
 
-  const { data } = await client.get('/forecast', {
-    params: { q: city, appid: API_KEY, units: 'metric', cnt: 40 }
+  const { data } = await client.get("/forecast", {
+    params: { q: city, appid: API_KEY, units: "metric", cnt: 40 },
   });
 
   const normalized = normalizeForecast(data);
@@ -26,8 +26,8 @@ export async function fetchForecastByCoords(lat, lon) {
   const cached = await cacheGet(key);
   if (cached) return cached;
 
-  const { data } = await client.get('/forecast', {
-    params: { lat, lon, appid: API_KEY, units: 'metric', cnt: 40 }
+  const { data } = await client.get("/forecast", {
+    params: { lat, lon, appid: API_KEY, units: "metric", cnt: 40 },
   });
 
   const normalized = normalizeForecast(data);
@@ -46,10 +46,10 @@ function normalizeForecast(raw) {
     cloudCover: item.clouds?.all || 0,
     visibility: item.visibility || 10000,
     rainProbability: Math.round((item.pop || 0) * 100),
-    rain: item.rain?.['3h'] || 0,
-    condition: item.weather[0]?.main || 'Clear',
-    description: item.weather[0]?.description || '',
-    icon: item.weather[0]?.icon || '01d',
+    rain: item.rain?.["3h"] || 0,
+    condition: item.weather[0]?.main || "Clear",
+    description: item.weather[0]?.description || "",
+    icon: item.weather[0]?.icon || "01d",
     conditionId: item.weather[0]?.id || 800,
   }));
 
@@ -73,9 +73,14 @@ function normalizeForecast(raw) {
       timestamp: rep.timestamp,
       tempMin: Math.min(...temps),
       tempMax: Math.max(...temps),
-      humidity: Math.round(items.reduce((s, i) => s + i.humidity, 0) / items.length),
+      humidity: Math.round(
+        items.reduce((s, i) => s + i.humidity, 0) / items.length,
+      ),
       rainProbability: Math.max(...items.map((i) => i.rainProbability)),
-      windSpeed: Math.round(items.reduce((s, i) => s + i.windSpeed, 0) / items.length * 10) / 10,
+      windSpeed:
+        Math.round(
+          (items.reduce((s, i) => s + i.windSpeed, 0) / items.length) * 10,
+        ) / 10,
       condition: rep.condition,
       description: rep.description,
       icon: rep.icon,

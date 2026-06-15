@@ -1,18 +1,18 @@
-import axios from 'axios';
-import { cacheGet, cacheSet } from '../cache.js';
-import { CACHE_KEYS } from '../../constants/index.js';
+import axios from "axios";
+import { cacheGet, cacheSet } from "../cache.js";
+import { CACHE_KEYS } from "../../constants/index.js";
 
-const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY || '0a9c043d5f1b56f2e377adbc998bbec3';
-const BASE = 'https://api.openweathermap.org/data/2.5';
+const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
+const BASE = "https://api.openweathermap.org/data/2.5";
 
 const client = axios.create({ baseURL: BASE, timeout: 10000 });
 
 client.interceptors.response.use(
   (res) => res,
   (err) => {
-    const msg = err.response?.data?.message || err.message || 'Network error';
+    const msg = err.response?.data?.message || err.message || "Network error";
     throw new Error(msg);
-  }
+  },
 );
 
 export async function fetchWeatherByCity(city) {
@@ -20,8 +20,8 @@ export async function fetchWeatherByCity(city) {
   const cached = await cacheGet(key);
   if (cached) return cached;
 
-  const { data } = await client.get('/weather', {
-    params: { q: city, appid: API_KEY, units: 'metric' }
+  const { data } = await client.get("/weather", {
+    params: { q: city, appid: API_KEY, units: "metric" },
   });
 
   const normalized = normalizeCurrentWeather(data);
@@ -30,12 +30,13 @@ export async function fetchWeatherByCity(city) {
 }
 
 export async function fetchWeatherByCoords(lat, lon) {
-  const key = CACHE_KEYS.CURRENT_WEATHER + `${lat.toFixed(2)},${lon.toFixed(2)}`;
+  const key =
+    CACHE_KEYS.CURRENT_WEATHER + `${lat.toFixed(2)},${lon.toFixed(2)}`;
   const cached = await cacheGet(key);
   if (cached) return cached;
 
-  const { data } = await client.get('/weather', {
-    params: { lat, lon, appid: API_KEY, units: 'metric' }
+  const { data } = await client.get("/weather", {
+    params: { lat, lon, appid: API_KEY, units: "metric" },
   });
 
   const normalized = normalizeCurrentWeather(data);
@@ -47,7 +48,7 @@ function normalizeCurrentWeather(raw) {
   return {
     id: raw.id,
     city: raw.name,
-    country: raw.sys?.country || '',
+    country: raw.sys?.country || "",
     temperature: raw.main.temp,
     feelsLike: raw.main.feels_like,
     tempMin: raw.main.temp_min,
@@ -58,9 +59,9 @@ function normalizeCurrentWeather(raw) {
     windSpeed: raw.wind?.speed || 0,
     windDeg: raw.wind?.deg || 0,
     cloudCover: raw.clouds?.all || 0,
-    condition: raw.weather[0]?.main || 'Clear',
-    description: raw.weather[0]?.description || '',
-    icon: raw.weather[0]?.icon || '01d',
+    condition: raw.weather[0]?.main || "Clear",
+    description: raw.weather[0]?.description || "",
+    icon: raw.weather[0]?.icon || "01d",
     conditionId: raw.weather[0]?.id || 800,
     sunrise: raw.sys?.sunrise,
     sunset: raw.sys?.sunset,
